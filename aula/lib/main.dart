@@ -6,44 +6,59 @@ void main() {
 
 class Eudes extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return Silva();
-  }
+  State<StatefulWidget> createState() => Eudeslima();
 }
 
-class Silva extends State<Eudes> {
-  var pesquisa = 0;
-  void lista() {
+class Eudeslima extends State<Eudes> {
+  var indice = 0;
+  void listagem() {
     setState(() {
-      pesquisa++;
+      indice++;
     });
   }
 
   @override
-  Widget build(Object context) {
-    final resposta = [
-      'Seu nome',
-      'Idade',
-      'Data de nascimento',
-      'Bairro',
+  Widget build(BuildContext context) {
+    var perguntas = [
+      'Nome?',
+      'Idade?',
+      'Telefone?',
+      'Bairro?',
+      'Endereço?',
     ];
+
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Entrevista')),
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.amber),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(resposta[pesquisa]),
-            ElevatedButton(onPressed: lista, child: Text('clique'))
-          ],
+      home: Scaffold(
+        appBar: AppBar(
+          title: Center(child: const Text('ENTREVISTA')),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                perguntas[indice],
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: listagem,
+                  child: const Text('clique',style: TextStyle(fontSize: 30),),
+                  style: ButtonStyle  (foregroundColor:MaterialStateProperty.all(Colors.blue)),
+                ),
+              )
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }
+
 
 
 
