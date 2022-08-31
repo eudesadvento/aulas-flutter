@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './questão.dart';
 
 void main() {
   runApp(Eudes());
@@ -36,23 +37,49 @@ class Eudeslima extends State<Eudes> {
           title: Center(child: const Text('ENTREVISTA')),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                perguntas[indice],
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Questoes(
+              perguntas[indice],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: listagem,
+                child: Container(
+                    width: 330,
+                    margin: EdgeInsets.all(10),
+                    child: Center(
+                        child: Text(
+                      'clique',
+                      style: TextStyle(fontSize: 30),
+                    ))),
+                style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(Colors.blue)),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: listagem,
-                  child: const Text('clique',style: TextStyle(fontSize: 30),),
-                  style: ButtonStyle  (foregroundColor:MaterialStateProperty.all(Colors.blue)),
-                ),
-              )
-            ],
-          ),
+            ),
+            Center(
+              child: Stack( alignment:Alignment.center ,
+                children: [
+                  Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.green,
+                  ),
+                  Container(
+                    width: 200,
+                    height: 200,
+                    color: Colors.yellow,
+                  ),
+                  Container(
+                    
+                    width: 100,
+                    height: 100,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+            )
+          ]),
         ),
       ),
     );
